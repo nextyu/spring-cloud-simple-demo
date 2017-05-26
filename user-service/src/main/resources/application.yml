@@ -9,17 +9,19 @@ spring:
         service-id: config
 
 
+
 server:
   port: 7777
 
 
-# 配置服务注册中心
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    serviceUrl:
-      defaultZone: http://registry:8761/eureka/
+# mybatis配置
+mybatis:
+  type-aliases-package: com.nextyu.domain
+  mapper-locations: classpath*:mapper/*.xml
+
+
+
+
 
 
 

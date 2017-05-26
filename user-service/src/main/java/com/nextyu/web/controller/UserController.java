@@ -1,37 +1,37 @@
 package com.nextyu.web.controller;
 
 import com.nextyu.domain.User;
+import com.nextyu.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * created on 2017-05-25 17:19
  *
  * @author nextyu
  */
-@RequestMapping("user")
+@Api(value = "用户API", tags = "用户API")
+@RequestMapping("/users")
 @RestController
 public class UserController {
 
     @Value("${haha}")
     public String haha;
 
-    @RequestMapping("/list")
+    @Autowired
+    private UserService userService;
+
+    @ApiOperation(value = "获取用户列表", notes = "获取用户列表", response = User.class,responseContainer = "List")
+    @RequestMapping(method = RequestMethod.GET)
     public Object list() {
-        List<User> users = new ArrayList<>();
-        User user = new User(1L, "小明");
-        User user2 = new User(1L, "小黑");
-        User user3 = new User(1L, "小花");
-        users.add(user);
-        users.add(user2);
-        users.add(user3);
 
-        System.out.println(haha+"-------------------------------------");
+        System.out.println(haha + "-------------------------------------");
 
-        return users;
+        return userService.listAll();
     }
 }
