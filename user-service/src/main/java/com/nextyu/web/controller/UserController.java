@@ -26,7 +26,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @ApiOperation(value = "获取用户列表", notes = "获取用户列表", response = User.class,responseContainer = "List")
+    @ApiOperation(value = "获取用户列表", notes = "获取用户列表", response = User.class, responseContainer = "List")
     @RequestMapping(method = RequestMethod.GET)
     public Object list() {
 
