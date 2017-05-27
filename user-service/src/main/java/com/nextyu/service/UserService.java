@@ -11,4 +11,12 @@ import java.util.List;
  */
 public interface UserService {
     List<User> listAll();
+
+    void save(User user);
+
+    User getById(Long id);
+
+    void update(User user);
+
+    void deleteById(Long id);
 }
