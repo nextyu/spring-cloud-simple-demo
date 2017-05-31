@@ -40,6 +40,9 @@ public class UserController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Object list(HttpServletRequest request) {
 
+        if (true) {
+            throw new RuntimeException("");
+        }
 
 
         System.out.println(haha + "-------------------------------------");

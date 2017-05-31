@@ -5,6 +5,7 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +27,7 @@ public class AccessFilter extends ZuulFilter {
         // , "route" for routing to an origin
         // , "post" for post-routing filters
         // , "error" for error handling.
-        return "pre";
+        return FilterConstants.PRE_TYPE;
     }
 
     @Override
@@ -45,7 +46,6 @@ public class AccessFilter extends ZuulFilter {
         HttpServletRequest request = ctx.getRequest();
 
         logger.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
-
 
 
         try {
@@ -71,6 +71,8 @@ public class AccessFilter extends ZuulFilter {
         } catch (Exception e) {
             ctx.set("error.status_code", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             ctx.set("error.exception", e);
+            logger.error("", e);
+            return null;
         }
 
 

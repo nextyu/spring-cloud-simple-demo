@@ -18,6 +18,7 @@
         <module>config-server</module>
         <module>registry-server</module>
         <module>user-service</module>
+        <module>api-gateway</module>
     </modules>
 
 </project>
