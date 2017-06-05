@@ -34,11 +34,11 @@ public class ErrorFilter extends ZuulFilter {
 
     @Override
     public Object run() {
-        RequestContext ctx = RequestContext.getCurrentContext();
+        /*RequestContext ctx = RequestContext.getCurrentContext();
         Throwable throwable = ctx.getThrowable();
         logger.error("this is a ErrorFilter : {}", throwable.getCause().getMessage());
         ctx.set("error.status_code", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-        ctx.set("error.exception", throwable.getCause());
+        ctx.set("error.exception", throwable.getCause());*/
         return null;
     }
 }

@@ -1,10 +1,14 @@
 package com.nextyu.filter;
 
 
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +23,9 @@ import java.util.Enumeration;
 public class AccessFilter extends ZuulFilter {
 
     private static Logger logger = LoggerFactory.getLogger(AccessFilter.class);
+
+    @Autowired
+    private JWTVerifier verifier;
 
     @Override
     public String filterType() {
@@ -47,34 +54,44 @@ public class AccessFilter extends ZuulFilter {
 
         logger.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 
-
         try {
 
-            if (true) {
-                throw new RuntimeException("");
-            }
-
+/*
             Enumeration<String> headerNames = request.getHeaderNames();
             while (headerNames.hasMoreElements()) {
                 String headerName = headerNames.nextElement();
                 logger.info("{} : {}", headerName, request.getHeader(headerName));
+            }*/
+
+            // 校验accessToken
+            String accessToken = request.getHeader("Authorization");
+            if (accessToken == null) {
+                logger.warn("access token is empty");
+                ctx.setSendZuulResponse(false);
+                ctx.setResponseStatusCode(HttpServletResponse.SC_FORBIDDEN);
+                return null;
             }
 
-       /* Object accessToken = request.getParameter("accessToken");
-        if (accessToken == null) {
-            logger.warn("access token is empty");
-            ctx.setSendZuulResponse(false);
-            ctx.setResponseStatusCode(401);
+            DecodedJWT jwt = verifier.verify(accessToken);
+            System.out.println(jwt.getIssuer());
+            System.out.println(jwt.getClaim("userId").asInt());
+
+        } catch (JWTVerificationException e) {
+            logger.warn("access token is not valid");
+            //ctx.setSendZuulResponse(false);
+            ctx.setResponseStatusCode(HttpServletResponse.SC_FORBIDDEN);
+            ctx.set("error.status_code", HttpServletResponse.SC_FORBIDDEN);
+            logger.error("", e);
             return null;
-        }
-        logger.info("access token ok");*/
         } catch (Exception e) {
+            ctx.setSendZuulResponse(false);
             ctx.set("error.status_code", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             ctx.set("error.exception", e);
             logger.error("", e);
             return null;
         }
 
+        logger.info("access token ok");
 
         return null;
     }
