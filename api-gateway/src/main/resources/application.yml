@@ -18,12 +18,29 @@ zuul:
     max-total-connections: 200
     max-per-route-connections: 20
 
+
   routes:
     user-service:
       path: /users/**
       serviceId: user-service
       stripPrefix: false
       sensitiveHeaders:
+
+# 超时设置
+hystrix:
+  command:
+    default: #注意这里是对应的 serviceId，也可以使用“default”，针对全部的服务配置
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 150000
+
+default: #注意这里是对应的 serviceId，也可以使用“default”，针对全部的服务配置
+  ribbon:
+    ReadTimeout: 150000
+
+
+
 
 
 

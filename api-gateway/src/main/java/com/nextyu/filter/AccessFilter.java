@@ -54,9 +54,11 @@ public class AccessFilter extends ZuulFilter {
 
         logger.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 
+
+
         try {
 
-/*
+            /*
             Enumeration<String> headerNames = request.getHeaderNames();
             while (headerNames.hasMoreElements()) {
                 String headerName = headerNames.nextElement();
@@ -68,7 +70,7 @@ public class AccessFilter extends ZuulFilter {
             if (accessToken == null) {
                 logger.warn("access token is empty");
                 ctx.setSendZuulResponse(false);
-                ctx.setResponseStatusCode(HttpServletResponse.SC_FORBIDDEN);
+                ctx.setResponseStatusCode(HttpServletResponse.SC_UNAUTHORIZED);
                 return null;
             }
 
@@ -78,13 +80,15 @@ public class AccessFilter extends ZuulFilter {
 
         } catch (JWTVerificationException e) {
             logger.warn("access token is not valid");
-            //ctx.setSendZuulResponse(false);
-            ctx.setResponseStatusCode(HttpServletResponse.SC_FORBIDDEN);
-            ctx.set("error.status_code", HttpServletResponse.SC_FORBIDDEN);
+            ctx.setSendZuulResponse(false);
+            ctx.setResponseStatusCode(HttpServletResponse.SC_UNAUTHORIZED);
+            ctx.set("error.status_code", HttpServletResponse.SC_UNAUTHORIZED);
+            ctx.set("error.exception", e);
             logger.error("", e);
             return null;
         } catch (Exception e) {
             ctx.setSendZuulResponse(false);
+            ctx.setResponseStatusCode(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             ctx.set("error.status_code", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             ctx.set("error.exception", e);
             logger.error("", e);

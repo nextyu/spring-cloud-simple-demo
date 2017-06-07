@@ -1,5 +1,6 @@
 package com.nextyu.web.controller;
 
+import com.nextyu.constant.SwaggerParamTypeConstants;
 import com.nextyu.domain.User;
 import com.nextyu.service.UserService;
 import io.swagger.annotations.Api;
@@ -36,14 +37,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     @ApiOperation(value = "获取用户列表", notes = "获取用户列表", response = User.class, responseContainer = "List")
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Object list(HttpServletRequest request) {
-
-        /*if (true) {
-            throw new RuntimeException("");
-        }*/
-
 
         System.out.println(haha + "-------------------------------------");
 
@@ -59,7 +56,7 @@ public class UserController {
     @ApiOperation(value = "根据id查找用户", notes = "根据id查找用户", response = User.class)
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户id", required = true,
-                    dataType = "Long", defaultValue = "1", paramType = "query")
+                    dataType = "Long", defaultValue = "1", paramType = SwaggerParamTypeConstants.PATH)
     })
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Object getById(@PathVariable Long id) {
@@ -68,8 +65,10 @@ public class UserController {
 
     @ApiOperation(value = "新建一个用户", notes = "新建一个用户", response = String.class)
     @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "用户id", required = false, readOnly = true,
+                    dataType = "Long", defaultValue = "", paramType = SwaggerParamTypeConstants.FORM),
             @ApiImplicitParam(name = "name", value = "用户名", required = true,
-                    dataType = "String", defaultValue = "蝙蝠侠", paramType = "query")
+                    dataType = "String", defaultValue = "蝙蝠侠", paramType = SwaggerParamTypeConstants.FORM)
     })
     @RequestMapping(value = "", method = RequestMethod.POST)
     public Object save(User user) {
@@ -80,12 +79,12 @@ public class UserController {
     @ApiOperation(value = "更新一个用户", notes = "更新一个用户", response = String.class)
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户id", required = true,
-                    dataType = "Long", defaultValue = "1", paramType = "query"),
+                    dataType = "Long", defaultValue = "1", paramType = SwaggerParamTypeConstants.PATH),
             @ApiImplicitParam(name = "name", value = "用户名", required = true,
-                    dataType = "String", defaultValue = "蝙蝠侠", paramType = "query")
+                    dataType = "String", defaultValue = "蝙蝠侠", paramType = SwaggerParamTypeConstants.FORM)
     })
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public Object update(User user) {
+    public Object update(@PathVariable Long id, User user) {
         userService.update(user);
         return "success";
     }
@@ -93,7 +92,7 @@ public class UserController {
     @ApiOperation(value = "删除一个用户", notes = "删除一个用户", response = String.class)
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户id", required = true,
-                    dataType = "Long", defaultValue = "1", paramType = "query")
+                    dataType = "Long", defaultValue = "1", paramType = SwaggerParamTypeConstants.PATH)
     })
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public Object delete(@PathVariable Long id) {

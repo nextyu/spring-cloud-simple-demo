@@ -1,6 +1,9 @@
 package com.nextyu.web.handler;
 
 import com.nextyu.domain.User;
+import com.nextyu.web.controller.UserController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -14,9 +17,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestControllerAdvice
 public class GlobalErrorHandler {
+
+    private static Logger logger = LoggerFactory.getLogger(GlobalErrorHandler.class);
+
     @ExceptionHandler(value = Exception.class)
     public Object errorHandlerOverJson(HttpServletRequest request, HttpServletResponse response,
                                        Exception e) {
-        return new User(3L,"haha");
+        logger.error(request.getRequestURL().toString(), e);
+        return new User(3L, "haha");
     }
 }
