@@ -53,7 +53,7 @@ public class UserController {
             logger.info("{} : {}", headerName, request.getHeader(headerName));
         }
 
-        return userService.listAll();
+        return "success---" + haha;
     }
 
     @ApiOperation(value = "根据id查找用户", notes = "根据id查找用户", response = UserVO.class)

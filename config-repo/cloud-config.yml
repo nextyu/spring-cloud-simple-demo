@@ -1,4 +1,4 @@
-haha: default
+haha: github-default
 
 spring:
   datasource:

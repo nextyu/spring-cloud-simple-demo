@@ -1,4 +1,4 @@
-haha: dev
+haha: github-dev
 
 spring:
   datasource:

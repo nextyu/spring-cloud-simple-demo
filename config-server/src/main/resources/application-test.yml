@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@192.168.220.128:config-repo.git
+          timeout: 30000
+
+server:
+  port: 8888
+
+management:
+  security:
+    enabled: false
+
+
+
+
+
+
+
