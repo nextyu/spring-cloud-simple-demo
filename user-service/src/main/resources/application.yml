@@ -8,7 +8,7 @@ spring:
         enabled: true
         service-id: config
       profile: prod
-      name: application
+      name: cloud-config
 
 
 server:
