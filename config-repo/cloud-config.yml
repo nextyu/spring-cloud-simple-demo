@@ -14,4 +14,4 @@ spring:
       password: guest
 
 logging:
-  config: classpath:log4j2-dev.xml
+  config: log4j2-dev.xml
