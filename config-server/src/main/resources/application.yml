@@ -9,7 +9,6 @@ spring:
           search-paths: /config-repo
           timeout: 30000
 
-
 server:
   port: 8888
 
