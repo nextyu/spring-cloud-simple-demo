@@ -13,5 +13,8 @@ spring:
       username: guest
       password: guest
 
+logging:
+  config: classpath:log4j2-test.xml
+
 
 
