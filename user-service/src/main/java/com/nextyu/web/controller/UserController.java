@@ -3,6 +3,7 @@ package com.nextyu.web.controller;
 import com.nextyu.constant.SwaggerParamTypeConstants;
 import com.nextyu.domain.User;
 import com.nextyu.service.UserService;
+import com.nextyu.vo.UserVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -53,7 +54,7 @@ public class UserController {
         return userService.listAll();
     }
 
-    @ApiOperation(value = "根据id查找用户", notes = "根据id查找用户", response = User.class)
+    @ApiOperation(value = "根据id查找用户", notes = "根据id查找用户", response = UserVO.class)
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户id", required = true,
                     dataType = "Long", defaultValue = "1", paramType = SwaggerParamTypeConstants.PATH)
