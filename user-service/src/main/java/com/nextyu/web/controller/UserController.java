@@ -1,7 +1,8 @@
 package com.nextyu.web.controller;
 
+import com.nextyu.command.CommandThatFailsFast;
 import com.nextyu.constant.SwaggerParamTypeConstants;
-import com.nextyu.domain.User;
+import com.nextyu.entity.User;
 import com.nextyu.service.UserService;
 import com.nextyu.vo.UserVO;
 import io.swagger.annotations.Api;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
+import java.util.Random;
 
 /**
  * created on 2017-05-25 17:19
@@ -53,7 +55,8 @@ public class UserController {
             logger.info("{} : {}", headerName, request.getHeader(headerName));
         }
 
-        return "success---" + haha;
+        return userService.listAll();
+
     }
 
     @ApiOperation(value = "根据id查找用户", notes = "根据id查找用户", response = UserVO.class)
@@ -101,6 +104,13 @@ public class UserController {
     public Object delete(@PathVariable Long id) {
         userService.deleteById(id);
         return "success";
+    }
+
+    @ApiOperation(value = "command测试", notes = "command测试", response = String.class)
+    @RequestMapping(value = "/command", method = RequestMethod.GET)
+    public Object command() {
+        // 用随机数来模拟错误, 这里让正确率高一些
+        return new CommandThatFailsFast(new Random().nextInt(100) < 95).execute();
     }
 
 }

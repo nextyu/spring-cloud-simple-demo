@@ -1,7 +1,6 @@
 package com.nextyu.web.handler;
 
-import com.nextyu.domain.User;
-import com.nextyu.web.controller.UserController;
+import com.nextyu.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;

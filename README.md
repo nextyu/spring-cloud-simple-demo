@@ -1,3 +1,13 @@
+### 端口
+- api-gateway 80
+- registry-server 8761
+- config-server 8888
+- monitoring-server 6666
+- user-service 7777
+- order-service 9999
+- user-consumer-ribbon 9991
+- user-consumer-feign 9992
+
 
 ### 刷新配置
 - 刷新单个服务 post 请求 http:/localhost:8888/refresh 

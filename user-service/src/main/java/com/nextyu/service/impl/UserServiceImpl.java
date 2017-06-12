@@ -1,7 +1,7 @@
 package com.nextyu.service.impl;
 
 import com.nextyu.dao.UserMapper;
-import com.nextyu.domain.User;
+import com.nextyu.entity.User;
 import com.nextyu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

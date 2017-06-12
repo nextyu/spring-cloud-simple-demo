@@ -1,7 +1,7 @@
 package com.nextyu.dao;
 
 
-import com.nextyu.domain.User;
+import com.nextyu.entity.User;
 
 import java.util.List;
 

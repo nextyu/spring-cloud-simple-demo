@@ -1,6 +1,6 @@
 package com.nextyu.vo;
 
-import com.nextyu.domain.User;
+import com.nextyu.entity.User;
 
 /**
  * created on 2017-06-07 18:45

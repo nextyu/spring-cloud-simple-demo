@@ -1,6 +1,6 @@
 package com.nextyu.service;
 
-import com.nextyu.domain.User;
+import com.nextyu.entity.User;
 
 import java.util.List;
 

@@ -10,7 +10,6 @@ spring:
       name: cloud-config
       profile: dev
 
-
 server:
   port: 7777
 
@@ -24,13 +23,6 @@ management:
 mybatis:
   type-aliases-package: com.nextyu.domain
   mapper-locations: classpath*:mapper/*.xml
-
-
-
-
-
-
-
 
 
 
