@@ -22,3 +22,7 @@ java -jar xxx.jar --spring.profiles.active=prod
 ```
 
 http://localhost:8888/
+
+```
+docker run -p 8888:8888 config-server
+```
