@@ -6,3 +6,12 @@ services:
       - "8761:8761"
     expose:
       - 8761
+
+  config-server:
+      image: config-server
+      ports:
+        - "8888:8888"
+      expose:
+        - 8888
+      extra_hosts:
+       - "registry:localhost"
