@@ -14,4 +14,15 @@ services:
       expose:
         - 8888
       extra_hosts:
-       - "registry:localhost"
+       - "registry:127.0.0.1"
+
+  order-service:
+      image: order-service
+      ports:
+        - "9999:9999"
+      expose:
+        - 9999
+      extra_hosts:
+       - "registry:127.0.0.1"
+       - "mysql-host:172.168.2.16"
+       - "rabbitmq-host:172.168.2.16"
