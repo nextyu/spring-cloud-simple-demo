@@ -1,0 +1,8 @@
+version: '2.1'
+services:
+  registry-server:
+    image: registry-server
+    ports:
+      - "8761:8761"
+    expose:
+      - 8761
