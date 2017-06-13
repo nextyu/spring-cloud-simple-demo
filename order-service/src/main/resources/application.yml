@@ -9,7 +9,7 @@ spring:
         service-id: config
       name: cloud-config
       profile: dev
-      uri: http://config-host:8888
+      uri: http://127.0.0.1:8888
 
 
 
@@ -21,13 +21,7 @@ management:
   security:
     enabled: false
 
-# 配置服务注册中心
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    serviceUrl:
-      defaultZone: http://registry:8761/eureka/
+
 
 
 
