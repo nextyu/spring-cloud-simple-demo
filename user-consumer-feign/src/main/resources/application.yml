@@ -14,9 +14,12 @@ server:
   port: 9992
 
 
+
+
 management:
   security:
     enabled: false
+
 
 
 
