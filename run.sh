@@ -19,11 +19,15 @@ docker-compose rm -f
 # Start the mysql first and wait for it to become available
 docker-compose up -d mysql
 
+echo "Waiting for mysql..."
+
 sleep 20
 
 
 # Start the rabbitmq first and wait for it to become available
 docker-compose up -d rabbitmq
+
+echo "Waiting for rabbitmq..."
 
 sleep 20
 
