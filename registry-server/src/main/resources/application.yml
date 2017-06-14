@@ -9,7 +9,7 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-          defaultZone: http://registry:8761/eureka/
+          defaultZone: http://127.0.0.1:8761/eureka/
 
 server:
   port: 8761
