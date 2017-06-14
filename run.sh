@@ -19,7 +19,7 @@ docker-compose rm -f
 docker-compose up -d registry-server
 
 while [ -z ${REGISTRY_SERVER_READY} ]; do
-  echo "Waiting for config service..."
+  echo "Waiting for registry-server..."
   if [ "$(curl --silent $DOCKER_IP:8761/health 2>&1 | grep -q '\"status\":\"UP\"'; echo $?)" = 0 ]; then
       REGISTRY_SERVER_READY=true;
   fi
@@ -30,7 +30,7 @@ done
 docker-compose up -d config-server
 
 while [ -z ${CONFIG_SERVER_READY} ]; do
-  echo "Waiting for config service..."
+  echo "Waiting for registry-server..."
   if [ "$(curl --silent $DOCKER_IP:8888/health 2>&1 | grep -q '\"status\":\"UP\"'; echo $?)" = 0 ]; then
       CONFIG_SERVER_READY=true;
   fi
