@@ -6,9 +6,6 @@ services:
         - "9999:9999"
       expose:
         - 9999
-      depends_on:
-              - "registry-server"
-              - "config-server"
       extra_hosts:
        - "registry:127.0.0.1"
        - "rabbitmq-host:127.0.0.1"

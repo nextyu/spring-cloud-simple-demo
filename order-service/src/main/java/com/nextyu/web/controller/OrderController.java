@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OrderController {
 
-    @Value("${haha}")
+    /*@Value("${haha}")*/
     public String haha;
 
     @ApiOperation(value = "获取订单列表", notes = "获取订单列表")
