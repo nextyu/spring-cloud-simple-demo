@@ -1,20 +1,12 @@
 version: '2.1'
 services:
-  registry-server:
-    image: registry-server
-    ports:
-      - "8761:8761"
-    expose:
-      - 8761
-
-  config-server:
-      image: config-server
+  order-service:
+      image: order-service
       ports:
-        - "8888:8888"
+        - "9999:9999"
       expose:
-        - 8888
-      depends_on:
-        - "registry-server"
+        - 9999
       extra_hosts:
-        - "registry:127.0.0.1"
-
+       - "registry:127.0.0.1"
+       - "rabbitmq-host:127.0.0.1"
+       - "config-host:127.0.0.1"
