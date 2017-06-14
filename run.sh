@@ -15,6 +15,13 @@ DOCKER_IP=${DOCKER_IP:-0.0.0.0}
 docker-compose stop
 docker-compose rm -f
 
+# Start the rabbitmq first and wait for it to become available
+docker-compose up -d rabbitmq
+
+sleep 20
+
+
+
 # Start the registry server first and wait for it to become available
 docker-compose up -d registry-server
 

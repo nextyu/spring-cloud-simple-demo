@@ -1,5 +1,13 @@
 version: '2.1'
 services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - "/tmp"
+
   registry-server:
     image: registry-server
     ports:
