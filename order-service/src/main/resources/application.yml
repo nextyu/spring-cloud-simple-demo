@@ -1,7 +1,14 @@
 spring:
   application:
     name: order-service
-
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: config
+      name: cloud-config
+      profile: dev
 
 
 server:
@@ -11,7 +18,6 @@ server:
 management:
   security:
     enabled: false
-
 
 
 
