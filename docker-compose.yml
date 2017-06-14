@@ -1,19 +1,5 @@
 version: '2.1'
 services:
-  mysql:
-    image: mysql
-    ports:
-      - "3306:3306"
-    volumes:
-      - "/data"
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    environment:
-        TZ: "Asia/Shanghai"
-        MYSQL_DATABASE: "test"
-        MYSQL_USER: "test"
-        MYSQL_PASSWORD: "123456"
-        MYSQL_ROOT_PASSWORD: "123456"
-
   rabbitmq:
     image: rabbitmq:3-management
     ports:
@@ -46,6 +32,20 @@ services:
         - "9999:9999"
       expose:
         - 9999
+      depends_on:
+        - "registry-server"
+        - "config-server"
+      extra_hosts:
+       - "registry-server-host:172.168.2.69"
+       - "mysql-host:172.168.2.16"
+       - "rabbitmq-host:172.168.2.16"
+
+  user-service:
+      image: user-service
+      ports:
+        - "7777:7777"
+      expose:
+        - 7777
       depends_on:
         - "registry-server"
         - "config-server"
