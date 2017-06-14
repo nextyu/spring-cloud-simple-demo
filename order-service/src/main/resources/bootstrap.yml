@@ -1,5 +1,12 @@
-
-
+spring:
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: config
+      name: cloud-config
+      profile: dev
 
 # 配置服务注册中心
 eureka:
