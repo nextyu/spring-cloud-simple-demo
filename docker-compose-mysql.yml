@@ -5,9 +5,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - /data/mysql:/var/lib/mysql # 数据保存目录
       - /root/IdeaProjects/spring-cloud-simple-demo/mysql/script:/docker-entrypoint-initdb.d # 自动初始化脚本
-      - /root/IdeaProjects/spring-cloud-simple-demo/mysql/conf:/etc/mysql/conf.d # 自定义配置文件
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
         TZ: "Asia/Shanghai"
