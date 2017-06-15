@@ -12,15 +12,8 @@ spring:
       username: guest
       password: guest
 
-logging:
-  config: classpath:log4j2-test.xml
+#logging:
+ # config: classpath:log4j2-test.xml
 
-# 配置服务注册中心
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    serviceUrl:
-      defaultZone: http://registry:8761/eureka/
 
 

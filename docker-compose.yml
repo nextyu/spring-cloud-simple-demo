@@ -8,7 +8,6 @@ services:
       - /var/lib/mysql:/var/lib/mysql # 数据存储目录
       - ./mysql/script:/docker-entrypoint-initdb.d # 自动初始化脚本目录
       - ./mysql/conf:/etc/mysql/conf.d # 自定义配置文件目录
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
         TZ: "Asia/Shanghai"
         MYSQL_DATABASE: "test"

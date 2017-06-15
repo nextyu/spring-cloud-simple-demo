@@ -1,3 +1,8 @@
+### 命令
+```
+docker-compose rm -vf
+```
+
 ### 端口
 - api-gateway 80
 - registry-server 8761
