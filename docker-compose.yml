@@ -41,6 +41,17 @@ services:
       extra_hosts:
        - "registry-server-host:172.168.2.69"
 
+  api-gateway:
+      image: api-gateway
+      ports:
+        - "80:80"
+      expose:
+        - 80
+      depends_on:
+        - "registry-server"
+      extra_hosts:
+       - "registry-server-host:172.168.2.69"
+
   order-service:
       image: order-service
       ports:

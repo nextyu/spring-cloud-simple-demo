@@ -19,6 +19,11 @@ zuul:
       serviceId: user-service
       stripPrefix: false
       sensitiveHeaders:
+    order-service:
+      path: /orders/**
+      serviceId: order-service
+      stripPrefix: false
+      sensitiveHeaders:
 
 # 超时设置
 hystrix:
