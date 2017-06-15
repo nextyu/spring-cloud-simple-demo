@@ -68,3 +68,33 @@ services:
        - "registry-server-host:172.168.2.69"
        - "mysql-host:172.168.2.16"
        - "rabbitmq-host:172.168.2.16"
+
+  user-consumer-feign:
+      image: user-consumer-feign
+      ports:
+        - "9992:9992"
+      expose:
+        - 9992
+      depends_on:
+        - "registry-server"
+        - "config-server"
+        - "user-service"
+      extra_hosts:
+       - "registry-server-host:172.168.2.69"
+       - "mysql-host:172.168.2.16"
+       - "rabbitmq-host:172.168.2.16"
+
+  user-consumer-ribbon:
+      image: user-consumer-ribbon
+      ports:
+        - "9991:9991"
+      expose:
+        - 9991
+      depends_on:
+        - "registry-server"
+        - "config-server"
+        - "user-service"
+      extra_hosts:
+       - "registry-server-host:172.168.2.69"
+       - "mysql-host:172.168.2.16"
+       - "rabbitmq-host:172.168.2.16"
