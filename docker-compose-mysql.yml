@@ -5,6 +5,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
+      - /var/lib/mysql:/var/lib/mysql # 数据存储目录
       - ./mysql/script:/docker-entrypoint-initdb.d # 自动初始化脚本
       - ./mysql/conf:/etc/mysql/conf.d # 自定义配置文件
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
