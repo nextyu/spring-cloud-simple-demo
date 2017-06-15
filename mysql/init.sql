@@ -1,13 +1,16 @@
-drop table if exists user;
+USE test;
+DROP TABLE IF EXISTS user;
 
 /*==============================================================*/
 /* Table: user                                                  */
 /*==============================================================*/
-create table user
+CREATE TABLE user
 (
-   id                   bigint not null auto_increment comment 'id',
-   name                 varchar(50) comment '姓名',
-   primary key (id)
+  id   BIGINT NOT NULL AUTO_INCREMENT
+  COMMENT 'id',
+  name VARCHAR(50) COMMENT '姓名',
+  PRIMARY KEY (id)
 );
 
-alter table user comment '用户表';
+ALTER TABLE user
+  COMMENT '用户表';
