@@ -6,6 +6,7 @@ services:
       - "3306:3306"
     volumes:
       - "/data"
+      - /root/IdeaProjects/spring-cloud-simple-demo/mysql:/docker-entrypoint-initdb.d
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
         TZ: "Asia/Shanghai"
