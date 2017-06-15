@@ -22,3 +22,5 @@
 - [spring cloud 超时设置](https://www.javacodegeeks.com/2016/06/spring-cloud-zuul-support-configuring-timeouts.html)
 - [理解 HTTP 幂等性](http://www.cnblogs.com/weidagang2046/archive/2011/06/04/idempotence.html)
 - [消息总线](http://blog.didispace.com/springcloud7/)
+
+- [MySQL container failing to run initialisation scripts in Docker Compose](https://stackoverflow.com/questions/36347845/mysql-container-failing-to-run-initialisation-scripts-in-docker-compose)
