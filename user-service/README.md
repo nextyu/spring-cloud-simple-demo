@@ -5,6 +5,8 @@
 
 ```
 docker run -p 7777:7777 order-service
+
+java -jar user-service.jar --server.port=9998
 ```
 
 如下配置，启用了config-repo的cloud-config-dev.yml配置文件

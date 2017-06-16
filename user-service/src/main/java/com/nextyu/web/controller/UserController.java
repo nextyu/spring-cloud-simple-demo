@@ -66,7 +66,6 @@ public class UserController {
     })
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Object getById(@PathVariable Long id) {
-        System.out.println("win10-----------------------------------------------------");
         return userService.getById(id);
     }
 
