@@ -1,17 +1,16 @@
 haha: github-dev
 
 spring:
+
   datasource:
-      url: jdbc:mysql://172.168.2.69:3306/test
+      url: jdbc:mysql://mysql-server:3306/test
       username: root
       password: 123456
       driver-class-name: com.mysql.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource
   rabbitmq:
-      host: 172.168.2.69
+      host: rabbitmq-server
       port: 5672
       username: guest
       password: guest
 
-#logging:
- # config: classpath:log4j2-dev.xml
