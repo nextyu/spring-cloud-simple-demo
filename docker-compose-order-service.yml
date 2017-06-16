@@ -1,0 +1,14 @@
+version: '2.1'
+services:
+    order-service:
+        image: order-service
+        restart: always
+        ports:
+          - "9999:9999"
+        expose:
+          - 9999
+        extra_hosts:
+         - "registry-server:172.168.2.69"
+         - "mysql-server:172.168.2.69"
+         - "rabbitmq-server:172.168.2.69"
+        network_mode: "host"
