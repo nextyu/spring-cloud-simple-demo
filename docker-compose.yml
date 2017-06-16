@@ -2,6 +2,7 @@ version: '2.1'
 services:
   mysql:
     image: mysql
+    restart: always
     ports:
       - "3306:3306"
     volumes:
@@ -17,6 +18,7 @@ services:
 
   rabbitmq:
     image: rabbitmq:3-management
+    restart: always
     ports:
       - "15672:15672"
       - "5672:5672"
@@ -25,6 +27,7 @@ services:
 
   registry-server:
     image: registry-server
+    restart: always
     ports:
       - "8761:8761"
     expose:
@@ -32,6 +35,7 @@ services:
 
   config-server:
       image: config-server
+      restart: always
       ports:
         - "8888:8888"
       expose:
@@ -43,6 +47,7 @@ services:
 
   api-gateway:
       image: api-gateway
+      restart: always
       ports:
         - "80:80"
       expose:
@@ -55,6 +60,7 @@ services:
 
   user-service:
       image: user-service
+      restart: always
       ports:
         - "7777:7777"
       expose:
@@ -64,11 +70,12 @@ services:
         - "config-server"
       extra_hosts:
        - "registry-server:172.168.2.69"
-       - "mysql-server:172.168.2.16"
-       - "rabbitmq-server:172.168.2.16"
+       - "mysql-server:172.168.2.69"
+       - "rabbitmq-server:172.168.2.69"
 
   user-consumer-ribbon:
       image: user-consumer-ribbon
+      restart: always
       ports:
         - "9991:9991"
       expose:
@@ -79,5 +86,5 @@ services:
         - "user-service"
       extra_hosts:
        - "registry-server:172.168.2.69"
-       - "mysql-server:172.168.2.16"
-       - "rabbitmq-server:172.168.2.16"
+       - "mysql-server:172.168.2.69"
+       - "rabbitmq-server:172.168.2.69"
