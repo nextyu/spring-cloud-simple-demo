@@ -17,6 +17,5 @@ spring:
         service-id: config
       name: cloud-config
       profile: dev
-zuul:
-  routes:
+
 
