@@ -49,6 +49,7 @@ services:
         - 80
       depends_on:
         - "registry-server"
+        - "config-server"
       extra_hosts:
        - "registry-server:172.168.2.69"
 
