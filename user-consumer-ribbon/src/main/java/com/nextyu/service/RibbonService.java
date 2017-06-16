@@ -16,6 +16,10 @@ public class RibbonService {
     private RestTemplate restTemplate;
 
     public User getById(Long id) {
-        return restTemplate.getForObject("http://user-service/users/" + id, User.class);
+        // 直接调用 user-service 服务
+        //return restTemplate.getForObject("http://user-service/users/" + id, User.class);
+
+        // 通过网关调用 user-service 服务
+        return restTemplate.getForObject("http://api-gateway/users/" + id, User.class);
     }
 }

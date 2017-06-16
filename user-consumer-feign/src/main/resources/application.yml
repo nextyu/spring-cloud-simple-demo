@@ -1,7 +1,3 @@
-spring:
-  application:
-    name: user-consumer-feign
-
 server:
   port: 9992
 

@@ -55,7 +55,13 @@ public class AccessFilter extends ZuulFilter {
         logger.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 
 
+//        verifyToken(ctx, request);
 
+
+        return null;
+    }
+
+    private Object verifyToken(RequestContext ctx, HttpServletRequest request) {
         try {
 
             /*
