@@ -13,3 +13,17 @@ eureka:
 
 server:
   port: 8761
+
+# debug 模式
+#debug: true
+
+# 日志
+logging:
+  file: F:/registry-server.log
+  level:
+    root: DEBUG
+    org.springframework: INFO
+
+
+
+
